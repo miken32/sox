@@ -2623,23 +2623,25 @@
     },
 
     customizeToolsPageLists: function(settings) {
-        const trimLists = function(table) {
-            if (settings.filterInvalid) {
-                table.querySelectorAll("td.tagged-ignored").forEach(cell => cell.parentNode.remove());
-            }
-            if (settings.filterTypeQuestions) {
-                table.querySelectorAll("a.question-hyperlink").forEach(cell => cell.parentNode.parentNode.remove());
-            }
-            if (settings.filterTypeAnswers) {
-                table.querySelectorAll("a.answer-hyperlink").forEach(cell => cell.parentNode.parentNode.remove());
-            }
-            const listCount = settings.listCount || 3;
-            const rows = table.querySelectorAll("tr");
-            rows.forEach((row, i) => row.classList.toggle("collapsing", i >= listCount));
-        };
-        // tables are populated by XHR after page loads
-        sox.helpers.observe(Array.from(document.querySelectorAll("div.island")), "table.summary-table", trimLists);
-        // just in case we come in after a table has been loaded already
-        document.querySelectorAll("table.summary-table").forEach(table => trimLists(table));
+      const trimLists = function(table) {
+        if (settings.filterInvalid) {
+          table.querySelectorAll("td.tagged-ignored").forEach(cell => cell.parentNode.remove());
+        }
+        if (settings.filterTypeQuestions) {
+          table.querySelectorAll("a.question-hyperlink").forEach(cell => cell.parentNode.parentNode.remove());
+        }
+        if (settings.filterTypeAnswers) {
+          table.querySelectorAll("a.answer-hyperlink").forEach(cell => cell.parentNode.parentNode.remove());
+        }
+        const listCount = settings.listCount || 3;
+        const rows = table.querySelectorAll("tr");
+        rows.forEach((row, i) => row.classList.toggle("collapsing", i >= listCount));
+      };
+      // tables are populated by XHR after page loads
+    
+      sox.helpers.observe(Array.from(document.querySelectorAll("div.island")), "table.summary-table", trimLists);
+      // just in case we come in after a table has been loaded already
+      document.querySelectorAll("table.summary-table").forEach(table => trimLists(table));
+    }
   };
 })(window.sox = window.sox || {}, jQuery);
