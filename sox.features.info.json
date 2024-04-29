@@ -156,8 +156,8 @@
             "exclude": "*://*/questions/ask,*://*/questions/tagged*,*://*/questions/greatest-hits*"
         }, {
             "name": "customizeToolsPageLists",
-            "desc": "Customize the appearance of the tools page on Stack Overflow",
-            "extended_description": "This page is accessible to users who have earned 10 000 reputation on Stack Overflow",
+            "desc": "Customize the appearance of the /tools page on all sites",
+            "extended_description": "This feature will allow you to filter what posts are shown on the /tools page, which is accessible to all users with >10k reputation on a site.",
             "meta": "",
             "match": "https://*/tools",
             "exclude": "",
